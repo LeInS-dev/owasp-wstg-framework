@@ -148,3 +148,114 @@ gobuster>=3.1.0            # Directory/file, DNS and VHost busting
 feroxbuster>=2.7.0         # Fast, simple, recursive content discovery tool
 ffuf>=2.1.0                # Fast web fuzzer
 wfuzz>=3.1.0               # Web application fuzzer
+
+# ==============================================
+# DEPENDENCIAS PARA EL DASHBOARD WEB AVANZADO
+# ==============================================
+
+# Web framework y APIs
+Flask>=2.3.0               # Web framework para el dashboard
+Flask-CORS>=4.0.0          # CORS support para Flask
+flask-socketio>=5.3.0      # WebSockets para actualizaciones en tiempo real
+
+# Base de datos y almacenamiento
+sqlite3                    # Built-in (para desarrollo)
+SQLAlchemy>=2.0.0          # ORM para múltiples bases de datos
+alembic>=1.11.0            # Database migrations
+
+# Visualización y gráficos
+plotly>=5.15.0             # Gráficos interactivos para el dashboard
+bokeh>=3.2.0               # Visualización de datos interactiva
+matplotlib>=3.7.0          # Gráficos estáticos
+seaborn>=0.12.0            # Visualización estadística
+
+# Manipulación de datos avanzada
+pandas>=2.0.0              # Análisis de datos
+numpy>=1.24.0              # Computación numérica
+scipy>=1.11.0              # Computación científica
+
+# Machine Learning y análisis inteligente
+scikit-learn>=1.3.0        # Machine learning para detección de anomalías
+tensorflow>=2.13.0         # Deep learning (opcional)
+torch>=2.0.0               # Deep learning alternativo
+transformers>=4.31.0       # NLP para análisis de vulnerabilidades
+
+# Task queue y procesamiento asíncrono
+celery>=5.3.0              # Task queue para escaneos en background
+redis>=4.6.0               # Message broker para Celery
+rq>=1.12.0                 # Simple job queue
+
+# Web Scraping avanzado
+selenium>=4.11.0           # Browser automation
+playwright>=1.36.0         # Modern browser automation
+undetected-chromedriver>=3.5.0  # Anti-detection Chrome driver
+
+# Análisis de código y estático
+bandit>=1.7.5              # Security linter para Python
+safety>=2.3.0              # Dependency vulnerability checker
+semgrep>=1.32.0            # Static analysis
+
+# Reportes y exportación
+weasyprint>=59.0           # HTML to PDF conversion
+xhtml2pdf>=0.2.5           # PDF generation
+jinja2>=3.1.0              # Template engine para reportes
+jinja2-time>=0.2.0         # Extension de tiempo para Jinja2
+
+# Autenticación y seguridad
+PyJWT>=2.8.0               # JWT tokens
+bcrypt>=4.0.0              # Password hashing
+passlib>=1.7.4             # Password hashing library
+cryptography>=41.0.0       # Criptografía general
+
+# Monitoreo y logging
+prometheus-client>=0.17.0  # Metrics para Prometheus
+grafana-api>=1.0.3         # Grafana API client
+structlog>=23.1.0          # Structured logging
+
+# Testing de APIs REST/GraphQL
+httpx>=0.24.0              # Async HTTP client
+aiohttp>=3.8.0             # Async HTTP server/client
+graphene>=3.3              # GraphQL library
+fastapi>=0.101.0           # Fast API framework alternativo
+
+# Análisis de archivos y forense
+python-magic>=0.4.27       # File type detection
+py7zr>=0.20.0              # 7z archive handling
+pyzipper>=0.3.6            # ZIP handling con password
+
+# Networking avanzado
+netaddr>=0.8.0             # Network address manipulation
+dnspython>=2.4.0           # DNS toolkit
+python-whois>=0.8.0        # WHOIS queries
+scapy>=2.5.0               # Packet manipulation
+
+# Herramientas específicas de seguridad avanzadas
+pyshark>=0.6.0             # Wireshark bindings
+psutil>=5.9.0              # System monitoring
+distro>=1.8.0              # Linux distribution info
+
+# Entorno de desarrollo y debugging
+ipython>=8.14.0            # Enhanced Python REPL
+jupyter>=1.0.0             # Jupyter notebook support
+notebook>=7.0.0            # Jupyter notebooks
+
+# Docker y containers
+docker>=6.1.0              # Docker Python API
+kubernetes>=27.2.0         # Kubernetes Python client
+
+# Cloud services (integración opcional)
+boto3>=1.28.0              # AWS SDK
+google-cloud-security>=1.0.0  # Google Cloud Security
+azure-mgmt-security>=3.0.0  # Azure Security
+
+# Configuración avanzada
+pydantic>=2.0.0            # Data validation
+pydantic-settings>=2.0.0   # Settings management
+dynaconf>=3.2.0            # Configuration management
+
+# Utils para el framework
+click>=8.1.0               # CLI framework
+rich>=13.0.0               # Rich text formatting
+typer>=0.9.0               # Modern CLI framework
+tqdm>=4.65.0               # Progress bars
+colorama>=0.4.0            # Terminal colors
