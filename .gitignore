@@ -1,0 +1,194 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Virtual environments
+venv/
+env/
+ENV/
+.venv/
+.env/
+.env.local
+.env.*.local
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Project specific
+*.log
+*.db
+*.sqlite
+*.sqlite3
+*.json.bak
+*.txt.bak
+
+# Output directories
+outputs/
+logs/
+reports/
+kali_outputs/
+*_reports/
+*_outputs/
+
+# Temporary files
+*.tmp
+*.temp
+*.bak
+*.backup
+*.old
+*.orig
+
+# Configuration files with sensitive data
+config.ini
+secrets.txt
+credentials.txt
+api_keys.txt
+
+# Test files
+test_*.py
+*_test.py
+tests/
+testing/
+
+# Tool outputs
+nmap_*
+nikto_*
+hydra_*
+sqlmap_*
+burp_*
+zap_*
+
+# Session files
+*.session
+cookies.txt
+*.cookies
+
+# Kali tool outputs
+*.pcap
+*.cap
+*.dmp
+
+# Documentation build
+docs/_build/
+site/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# pyenv
+.python-version
+
+# pipenv
+Pipfile.lock
+
+# PEP 582
+__pycache__/
+*.pyp
+.pdm.toml
+
+# Celery
+celerybeat-schedule
+celerybeat.pid
+
+# SageMath parsed files
+*.sage.py
+
+# Spyder
+.spyderproject
+.spyproject
+
+# Rope
+.ropeproject
+
+# mkdocs documentation
+/site
+
+# mypy
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# Pyre type checker
+.pyre/
+
+# PyCharm
+.idea/
+
+# VSCode
+.vscode/
+
+# Local configuration
+local_config.json
+local_settings.py
+
+# Wordlists
+wordlists/
+*.txt.bak
+*.dic.bak
+
+# Backup files
+backup_*
+*_backup/
+
+# Capture files
+*.out
+*.err
+
+# Archive files
+*.zip
+*.tar.gz
+*.rar
+*.7z
+
+# Database files
+*.db3
+*.sqlite
+*.mdb
+*.accdb
+
+# Certificate files
+*.pem
+*.key
+*.crt
+*.csr
+
+# Binary files
+*.exe
+*.dll
+*.so
+*.dylib
+
+# Large files
+>100MB

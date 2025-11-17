@@ -1,274 +1,219 @@
-# 🛡️ OWASP WSTG Framework - Professional Security Testing for Kali Linux
+# OWASP WSTG Testing Framework
 
-[![OWASP](https://img.shields.io/badge/OWASP-Web_Security_Testing_Guide-red)](https://owasp.org/www-project-web-security-testing-guide/)
-[![Python](https://img.shields.io/badge/Python-3.8+-blue.svg)](https://python.org)
-[![Kali Linux](https://img.shields.io/badge/Kali_Linux-compatible-orange.svg)](https://www.kali.org/)
-[![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+## Arquitectura del Sistema
 
-> 🎯 **Framework completo y profesional** que implementa las **12 fases del OWASP Web Security Testing Guide (WSTG)** optimizado para **Kali Linux** con integración total de herramientas de seguridad.
+Este framework implementa el **OWASP Web Security Testing Guide (WSTG)** con una arquitectura modular optimizada para pruebas de seguridad web profesionales.
 
----
+## Estructura del Framework
 
-## 🌟 **Características Principales**
-
-### **🏗️ Arquitectura Profesional**
-- **12 Fases completas** del OWASP WSTG
-- **Modular y extensible** con código compartido
-- **Testing concurrente** y optimizado
-- **Manejo robusto de errores** y recuperación
-
-### **🔧 Integración Kali Linux**
-- **Detección automática** de herramientas (Nmap, Hydra, Nikto, etc.)
-- **Wrappers Python** para herramientas nativas
-- **Wordlists integradas** (rockyou.txt, seclists)
-- **Paralelización** con herramientas nativas
-
-### **📊 Reportes Profesionales**
-- **Múltiples formatos**: JSON, HTML, CSV
-- **Análisis de riesgo** con CVSS scoring
-- **Recomendaciones priorizadas**
-- **Executive summaries** para management
-
----
-
-## 🚀 **Instalación Rápida en Kali Linux**
-
-### **Método 1: Setup Automático (Recomendado)**
-```bash
-# Clonar repositorio
-git clone https://github.com/TU_USERNAME/owasp-wstg-framework.git
-cd owasp-wstg-framework
-
-# Ejecutar setup (instala todo automáticamente)
-chmod +x setup_kali.sh
-./setup_kali.sh
-
-# Activar entorno virtual
-source venv/bin/activate
-
-# Listo para usar! 🎉
+```
+testing_frameworks/
+├── core/                          # Módulos centrales compartidos
+│   ├── __init__.py
+│   ├── base_tester.py            # Clase base para todos los testers
+│   ├── utils.py                  # Utilidades comunes
+│   ├── report_generator.py       # Generador unificado de reportes
+│   └── config.py                 # Configuración global
+├── 01-Information_Gathering/      # Fase 1: Recopilación de Información
+│   ├── README.md                 # Documentación detallada
+│   ├── info_tester.py           # Script especializado de la fase
+│   └── modules/                 # Submódulos específicos
+├── 02-Configuration_and_Deployment_Management/
+├── 03-Identity_Management/
+├── 04-Authentication_Testing/
+├── 05-Authorization_Testing/
+├── 06-Session_Management/
+├── 07-Input_Validation/
+├── 08-Error_Handling/
+├── 09-Cryptography/
+├── 10-Business_Logic/
+├── 11-Client_Side/
+├── 12-API_Testing/
+├── wstg_framework.py             # Orquestador principal (UNIFIED)
+├── requirements.txt              # Dependencias del sistema
+└── README.md                     # Este archivo
 ```
 
-### **Método 2: Manual**
+## Diseño Arquitectónico
+
+### 1. **Arquitectura Modular Especializada**
+- **Un script principal** (`wstg_framework.py`) para orquestación
+- **Scripts especializados** por fase para testing profundo
+- **Módulos centrales** para funcionalidades compartidas
+
+### 2. **Ventajas de este Diseño**
+
+#### **Flexibilidad**
 ```bash
-# Instalar dependencias de Python
-pip3 install -r requirements.txt
+# Ejecutar fase específica
+python wstg_framework.py --target example.com --phase info
 
-# Instalar herramientas Kali
-sudo apt update
-sudo apt install nmap nikto hydra gobuster sqlmap -y
-
-# Ejecutar framework
-python3 complete_wstg_framework.py --target example.com
-```
-
----
-
-## 📋 **Fases del Framework (WSTG)**
-
-| Fase | ID | Descripción | Herramientas Kali |
-|------|-----|-------------|-----------------|
-| 1 | **WSTG-INFO** | Information Gathering | Nmap, Dirb, Gobuster |
-| 2 | **WSTG-CONF** | Configuration Testing | Nikto, TestSSL, Nmap |
-| 3 | **WSTG-IDNT** | Identity Management | Hydra, CeWL |
-| 4 | **WSTG-ATHN** | Authentication Testing | Hydra, Hashcat, John |
-| 5 | **WSTG-ATHZ** | Authorization Testing | Burp Suite, OWASP ZAP |
-| 6 | **WSTG-SESS** | Session Management | Wireshark, Burp Suite |
-| 7 | **WSTG-INPV** | Input Validation | Sqlmap, XSSer |
-| 8 | **WSTG-ERRH** | Error Handling | Curl, Wfuzz |
-| 9 | **WSTG-CRYP** | Cryptography | TestSSL, Hashcat |
-| 10 | **WSTG-BUSL** | Business Logic | Burp Suite, OWASP ZAP |
-| 11 | **WSTG-CLNT** | Client-side Testing | Selenium, OWASP ZAP |
-| 12 | **WSTG-APIT** | API Testing | OWASP ZAP, Postman |
-
----
-
-## 💻 **Uso del Framework**
-
-### **Ejecución Completa**
-```bash
-# Todas las fases
-python complete_wstg_framework.py --target example.com
-
-# Con opciones avanzadas
-python complete_wstg_framework.py \
-  --target example.com \
-  --verbose \
-  --output-dir ./reports
-```
-
-### **Ejecución por Fases**
-```bash
-# Orquestador principal
-python wstg_framework.py --target example.com --phase all
+# Ejecutar múltiples fases
 python wstg_framework.py --target example.com --phase info,conf,auth
 
-# Scripts individuales
+# Ejecutar todas las fases
+python wstg_framework.py --target example.com --phase all
+
+# Ejecutar script especializado directamente
 python 01-Information_Gathering/info_tester.py --target example.com
-python 04-Authentication_Testing/authentication_tester.py --target example.com
-python 05-Authorization_Testing/authorization_tester.py --target example.com
 ```
 
-### **Con Integración Kali**
+#### **Eficiencia y Reutilización**
+- Cache de resultados entre fases
+- Descubrimientos compartidos (subdominios, tecnología, etc.)
+- Reportes integrados y consolidados
+
+#### **Mantenibilidad**
+- Código organizado por funcionalidad
+- Fácil agregar nuevas pruebas
+- Actualizaciones modulares
+
+### 3. **Arquitectura de Datos**
+
+```python
+# Estructura de datos unificada
+{
+    "target": "example.com",
+    "timestamp": "2024-01-01T12:00:00Z",
+    "session_id": "uuid-v4",
+    "global_findings": {
+        "technologies": [],
+        "subdomains": [],
+        "endpoints": []
+    },
+    "phases": {
+        "WSTG-INFO": {...},
+        "WSTG-CONF": {...},
+        "WSTG-IDNT": {...}
+    },
+    "summary": {
+        "total_vulnerabilities": 15,
+        "critical": 2,
+        "high": 5,
+        "medium": 8
+    }
+}
+```
+
+## Implementación Profesionales
+
+### **Principios de Diseño**
+
+1. **Single Responsibility**: Cada módulo tiene una responsabilidad clara
+2. **DRY (Don't Repeat Yourself)**: Código reutilizable entre fases
+3. **Extensibilidad**: Fácil agregar nuevos tests y módulos
+4. **Testabilidad**: Cada componente puede ser testeado independientemente
+5. **Performance**: Optimizado para escaneo eficiente
+
+### **Características Avanzadas**
+
+1. **Integración Continua**: Soporte para CI/CD
+2. **Reportes Múltiples**: JSON, XML, HTML, PDF
+3. **Base de Datos**: SQLite para almacenamiento persistente
+4. **Concurrencia**: Múltiples pruebas en paralelo
+5. **Rate Limiting**: Protección contra bloqueos
+6. **User Agents Rotativos**: Evitar detección
+
+### **Manejo de Errores y Recuperación**
+
+```python
+# Sistema robusto de manejo de errores
+try:
+    result = await tester.run_phase(phase)
+except NetworkError:
+    # Reintentar con configuración diferente
+except AuthenticationError:
+    # Continuar con otras fases
+except CriticalError:
+    # Detener ejecución y reportar
+```
+
+## Flujo de Trabajo Optimo
+
+### **1. Planificación**
 ```bash
-# Usar herramientas Kali
-python 04-Authentication_Testing/authentication_tester.py \
-  --target example.com \
-  --kali-tools \
-  --hydra-threads 50
+# Análisis rápido del target
+python wstg_framework.py --target example.com --recon
+
+# Planificación basada en descubrimientos
+python wstg_framework.py --target example.com --plan
 ```
 
----
-
-## 📊 **Ejemplos de Reportes**
-
-### **Resumen Ejecutivo**
-```
-==========================================
-OWASP WSTG Complete Security Report
-Target: example.com
-Date: 2024-01-01
-Risk Level: HIGH
-==========================================
-
-Total Phases: 12
-Total Vulnerabilities: 23
-Critical: 3
-High: 8
-Medium: 10
-Low: 2
-
-⚠️  HIGH RISK: 11 vulnerabilities found - Action required soon
-```
-
----
-
-## 🛠️ **Herramientas de Kali Integradas**
-
-| Herramienta | Uso en Framework | Comando Kali |
-|-------------|-------------------|-------------|
-| **Nmap** | Port scanning, service detection | `nmap -sV target.com` |
-| **Hydra** | Brute force authentication | `hydra -L users.txt -P passwords.txt` |
-| **Nikto** | Web vulnerability scanning | `nikto -h https://target.com` |
-| **Gobuster** | Directory/file enumeration | `gobuster dir -u https://target.com` |
-| **SQLMap** | SQL Injection testing | `sqlmap -u "https://target.com"` |
-| **Burp Suite** | Manual testing, proxy | `burpsuite` |
-| **OWASP ZAP** | Automated scanning | `zaproxy` |
-| **Hashcat** | Password cracking | `hashcat -m 0 hash.txt wordlist.txt` |
-
----
-
-## 🎯 **Casos de Uso**
-
-### **🔍 Para Pentesters**
+### **2. Ejecución por Etapas**
 ```bash
-# Escaneo completo
-python complete_wstg_framework.py --target pentest-target.com
+# Fase 1: Information Gathering (rápida, no intrusiva)
+python wstg_framework.py --target example.com --phase info --quick
 
-# Análisis rápido de configuración
-python 02-Configuration_and_Deployment_Management/configuration_testing.py --target target.com
+# Fase 2: Configuration Testing (basada en descubrimientos)
+python wstg_framework.py --target example.com --phase conf --info-cache
+
+# Fases 3-6: Authentication & Authorization (dependientes de fases anteriores)
+python wstg_framework.py --target example.com --phase idnt,athn,athz --use-cache
 ```
 
-### **🏢 Para Empresas**
+### **3. Reporte Integrado**
 ```bash
-# Auditoría regular
-python wstg_framework.py --target company-website.com --phase info,conf,auth --output-dir ./audit-2024-Q1
-
-# Cumplimiento PCI-DSS
-python 04-Authentication_Testing/authentication_tester.py --target payment-site.com --compliance pci-dss
+# Generar reporte consolidado
+python wstg_framework.py --target example.com --report --format html,pdf
 ```
 
-### **👨‍💻 Para Desarrolladores (DevSecOps)**
-```bash
-# Testing en desarrollo
-python complete_wstg_framework.py --target dev-app.internal --phase inpv,clnt,apit
+## Ventajas Competitivas
 
-# Integración CI/CD
-python wstg_framework.py --target ci-build.test --phase conf,inpv --format json
-```
+### **vs. Herramientas Existentes (Nessus, Burp, ZAP)**
 
----
+1. **Especialización OWASP**: 100% basado en estándares OWASP WSTG
+2. **Código Abierto**: Totalmente modificable y extensible
+3. **Integración Perfecta**: Todas las fases integradas
+4. **Reportes OWASP**: Formato estándar para auditorías
+5. **Costo-Efectivo**: Sin licencias, sin limitaciones
 
-## 🏆 **Ventajas Competitivas**
+### **vs. Scripts Simples**
 
-| Característica | Nuestro Framework | Nessus | Burp Suite Pro |
-|---------------|------------------|--------|--------------|
-| **Costo** | **100% Gratis** | 💰 $$$$ | 💰 $$$$ |
-| **OWASP Standard** | ✅ 100% | ⚠️ Parcial | ⚠️ Parcial |
-| **Kali Integration** | ✅ Nativa | ❌ Manual | ⚠️ Limitado |
-| **Código Fuente** | ✅ Completo | ❌ Cerrado | ❌ Cerrado |
-| **Personalización** | ✅ Total | ❌ Limitada | ⚠️ Limitada |
-| **Reportes** | ✅ Multi-formato | ✅ Profesionales | ✅ Profesionales |
-| **12 Fases** | ✅ Completo | ⚠️ Incompleto | ⚠️ Incompleto |
+1. **Escalabilidad**: Maneja múltiples targets concurrentemente
+2. **Persistencia**: Almacena resultados para análisis futuro
+3. **Profesionalismo**: Reportes listos para presentar a clientes
+4. **Mantenimiento**: Actualizaciones automáticas y mejoras continuas
 
----
+## Uso Profesional
 
-## 📁 **Estructura del Proyecto**
+### **Para Consultores de Seguridad**
+- Reportes profesionales para clientes
+- Cumplimiento con estándares de la industria
+- Documentación completa de hallazgos
+- Recomendaciones de remediación detalladas
 
-```
-owasp-wstg-framework/
-├── 📁 core/                          # Módulos centrales
-├── 📁 01-Information_Gathering/      # Phase 1: Reconnaissance
-├── 📁 02-Configuration_and_Deployment_Management/  # Phase 2: Config testing
-├── 📁 03-Identity_Management/        # Phase 3: Identity mgmt
-├── 📁 04-Authentication_Testing/      # Phase 4: Authentication
-├── 📁 05-Authorization_Testing/      # Phase 5: Authorization
-├── 📁 06-Session_Management/          # Phase 6: Session testing
-├── 📁 07-Input_Validation/            # Phase 7: Input validation
-├── 📁 08-Error_Handling/              # Phase 8: Error handling
-├── 📁 09-Cryptography/                # Phase 9: Crypto testing
-├── 📁 10-Business_Logic/              # Phase 10: Business logic
-├── 📁 11-Client_Side/                 # Phase 11: Client-side
-├── 📁 12-API_Testing/                 # Phase 12: API testing
-├── 🐍 complete_wstg_framework.py       # Script unificado
-├── 🎯 wstg_framework.py                # Orquestador principal
-├── 🔧 setup_kali.sh                   # Script instalación Kali
-├── 📦 requirements.txt                # Dependencias Python
-└── 📖 README.md                      # Esta documentación
-```
+### **Para Equipos de Desarrollo**
+- Integración en CI/CD
+- Testing automatizado en desarrollo
+- Detección temprana de vulnerabilidades
+- Educación en seguridad
 
----
+### **Para Empresas**
+- Cumplimiento normativo (PCI-DSS, ISO 27001)
+- Auditorías de seguridad internas
+- Evaluación de proveedores
+- Gestión de riesgo de seguridad
 
-## 🤝 **Contribuciones**
+## Roadmap de Implementación
 
-¡Las contribuciones son bienvenidas!
+### **Fase 1**: Core Framework ✅
+- Clases base y utilidades
+- Sistema de reportes
+- Gestión de configuración
 
-1. Fork el repositorio
-2. Crea una rama de feature: `git checkout -b feature/amazing-feature`
-3. Commit tus cambios: `git commit -m 'Add amazing feature'`
-4. Push a la rama: `git push origin feature/amazing-feature`
-5. Abre un Pull Request
+### **Fase 2**: Testing Modules (En Progreso)
+- Scripts especializados por fase
+- Integración de descubrimientos
+- Optimización de rendimiento
 
----
+### **Fase 3**: Advanced Features
+- Base de datos integrada
+- Concurrencia y parallelización
+- Interfaz web para gestión
 
-## 📜 **Licencia**
+### **Fase 4**: Enterprise Features
+- Multi-tenancy
+- Integración SIEM
+- API REST para integración
 
-Este proyecto está licenciado bajo la **MIT License**.
-
----
-
-## 🙏 **Agradecimientos**
-
-- **OWASP Foundation** - Por el Web Security Testing Guide
-- **Kali Linux Team** - Por la excelente plataforma de testing
-- **Security Community** - Por feedback y contribuciones
-
----
-
-## 📞 **Soporte**
-
-- 🐛 **Issues**: Report bugs y solicitudes de features
-- 📚 **Wiki**: Documentación extendida
-- 💬 **Discussions**: Comunidad y soporte
-
----
-
-<div align="center">
-
-**🛡️ Made with ❤️ for the Security Community**
-
-[![OWASP](https://img.shields.io/badge/OWASP-Community-green.svg)](https://owasp.org/)
-[![Kali Linux](https://img.shields.io/badge/Kali_Linux-Community-orange.svg)](https://www.kali.org/)
-[![Python](https://img.shields.io/badge/Python-Loves_Security-blue.svg)](https://python.org/)
-
-</div>
+Esta arquitectura proporciona el balance perfecto entre flexibilidad, rendimiento y mantenibilidad, permitiendo tanto testing rápido como análisis profundo según las necesidades del proyecto.

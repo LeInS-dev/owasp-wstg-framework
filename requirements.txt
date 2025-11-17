@@ -1,0 +1,150 @@
+# OWASP WSTG Testing Framework Requirements
+# Optimizado para Kali Linux y herramientas de seguridad profesional
+
+# Core dependencies
+requests>=2.31.0
+beautifulsoup4>=4.12.0
+lxml>=4.9.0
+certifi>=2023.0.0
+urllib3>=2.0.0
+
+# Data handling and validation
+python-dateutil>=2.8.0
+pydantic>=2.0.0
+faker>=19.0.0
+
+# Networking and DNS
+dnspython>=2.4.0
+python-whois>=0.8.0
+ipaddress>=1.0.0
+
+# SSL/TLS analysis
+pyOpenSSL>=23.0.0
+cryptography>=41.0.0
+
+# HTML parsing and web scraping
+html5lib>=1.1
+soupsieve>=2.5.0
+
+# Database support (optional for persistent storage)
+sqlite3  # Built-in with Python 3.x
+sqlalchemy>=2.0.0
+
+# PDF and report generation (optional)
+reportlab>=4.0.0
+matplotlib>=3.7.0  # For charts in reports
+
+# Configuration management
+pyyaml>=6.0
+python-dotenv>=1.0.0
+
+# Logging and monitoring
+colorama>=0.4.0
+tqdm>=4.65.0
+
+# Advanced utilities
+jinja2>=3.1.0  # For HTML report templates
+click>=8.1.0   # For CLI enhancements
+rich>=13.0.0   # For enhanced terminal output
+
+# Development and testing dependencies
+pytest>=7.4.0
+pytest-cov>=4.1.0
+black>=23.0.0
+flake8>=6.0.0
+
+# API testing
+httpx>=0.24.0
+aiohttp>=3.8.0
+
+# Cryptography and security
+bcrypt>=4.0.0
+cryptography>=41.0.0
+
+# Browser automation (for client-side testing)
+selenium>=4.11.0
+playwright>=1.36.0
+
+# Async support
+asyncio  # Built-in with Python 3.7+
+aiofiles>=23.0.0
+
+# Data export formats
+openpyxl>=3.1.0  # Excel support
+pandas>=2.0.0    # Data analysis and CSV handling
+
+# Performance monitoring
+psutil>=5.9.0
+memory-profiler>=0.61.0
+
+# Optional: Machine learning for anomaly detection
+scikit-learn>=1.3.0
+numpy>=1.24.0
+
+# Development documentation
+mkdocs>=1.5.0
+mkdocs-material>=9.1.0
+
+# ==============================================
+# HERRAMIENTAS ESPECÍFICAS DE KALI LINUX
+# ==============================================
+# NOTA: Estas herramientas deben instalarse vía apt en Kali:
+# sudo apt update && sudo apt install -y nmap nikto hydra dirb gobuster sqlmap burpsuite wpscan
+
+# Python wrappers para herramientas de Kali
+python-nmap>=0.7.1          # Wrapper para Nmap
+pymetasploit3>=1.0.0       # Interfaz para Metasploit
+python-owasp-zap-v2.9>=0.0.4  # OWASP ZAP API
+
+# Análisis de tráfico de red
+scapy>=2.5.0               # Manipulación de paquetes
+pyshark>=0.6.0             # Wrapper para Wireshark/tshark
+
+# Fuerza bruta y cracking
+hashcat-python>=3.6.0      # Hash cracking
+john>=1.9.0                # John the Ripper (si está disponible)
+
+# Análisis de malware y forense
+pyelftools>=0.29           # Análisis de archivos ELF
+volatility>=3.0.0          # Memory forensics
+
+# Web security especializado
+arachni>=1.6.0             # Web application security scanner
+wapiti>=3.1.0              # Web application vulnerability scanner
+skipfish>=2.10b            # Web application security scanner
+
+# Base de datos de exploits
+exploitdb>=2023.01.0       # Base de datos de exploits
+
+# Reverse engineering
+pwntools>=4.8.0            # CTF framework and exploit development library
+ropper>=3.4.0              # ROP gadget finder
+angr>=9.2.0                # Binary analysis platform
+
+# Criptografía avanzada
+pycryptodome>=3.18.0       # Cryptographic library
+ecdsa>=0.18.0              # Elliptic curve cryptography
+
+# Comunicaciones y protocolos
+paramiko>=3.2.0            # SSH implementation
+impacket>=0.10.0           # Network protocols libraries
+
+# Análisis de JavaScript y browser
+jsbeautifier>=1.14.0       # JavaScript beautifier
+esprima>=4.0.1             # JavaScript parser
+selenium-wire>=5.1.0       # Extensión de Selenium para interceptar tráfico
+
+# Testing de APIs
+postman-api>=0.1.0         # Postman API testing
+graphql-core>=3.2.3        # GraphQL testing
+
+# Utils de seguridad especializados
+pyotp>=2.9.0               # One-time password library
+cryptography-vectors>=41.0.0  # Cryptographic test vectors
+
+# Herramientas de Kali adicionales para web security
+dirsearch>=0.4.3           # Web path scanner
+gobuster>=3.1.0            # Directory/file, DNS and VHost busting
+feroxbuster>=2.7.0         # Fast, simple, recursive content discovery tool
+ffuf>=2.1.0                # Fast web fuzzer
+wfuzz>=3.1.0               # Web application fuzzer
