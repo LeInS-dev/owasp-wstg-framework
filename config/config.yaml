@@ -1,0 +1,75 @@
+# OWASP WSTG Framework - Configuración Base
+# Copiado desde config.yaml.example para inicio rápido
+
+framework:
+  name: "OWASP WSTG Framework"
+  version: "2.0.0"
+  debug: false
+  log_level: "INFO"
+  max_concurrent_scans: 5
+  default_timeout: 30
+
+database:
+  type: "sqlite"
+  sqlite:
+    path: "./data/wstg.db"
+    backup_enabled: true
+
+reports:
+  output_dir: "./reports"
+  formats: ["json", "html", "pdf"]
+  retention:
+    days: 90
+    max_size_gb: 10
+
+security:
+  max_requests_per_second: 10
+  connection_timeout: 30
+  user_agent: "OWASP-WSTG-Framework/2.0"
+  ssl:
+    verify_certificates: true
+
+tools:
+  nmap:
+    binary_path: "/usr/bin/nmap"
+    default_args: "-sS -sV"
+  nikto:
+    binary_path: "/usr/bin/nikto"
+  sqlmap:
+    binary_path: "/usr/bin/sqlmap"
+  gobuster:
+    binary_path: "/usr/bin/gobuster"
+  selenium:
+    driver_path: "/usr/local/bin/chromedriver"
+    browser: "chrome"
+    headless: true
+
+apis:
+  virustotal:
+    enabled: false
+    api_key: ""
+  shodan:
+    enabled: false
+    api_key: ""
+
+web_dashboard:
+  host: "127.0.0.1"
+  port: 8080
+  secret_key: "wstg-framework-secret-change-me"
+  auth:
+    enabled: true
+    users:
+      - username: "admin"
+        password: "admin123"
+        role: "admin"
+
+logging:
+  file:
+    enabled: true
+    path: "./logs/wstg_framework.log"
+  console:
+    enabled: true
+
+performance:
+  max_memory_mb: 2048
+  thread_pool_size: 10

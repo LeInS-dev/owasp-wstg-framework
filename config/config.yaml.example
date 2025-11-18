@@ -1,0 +1,361 @@
+# OWASP WSTG Framework - Archivo de Configuración Ejemplo
+# Copiar este archivo a config.yaml y ajustar según necesidad
+
+# ==============================================
+# CONFIGURACIÓN GENERAL DEL FRAMEWORK
+# ==============================================
+framework:
+  name: "OWASP WSTG Framework"
+  version: "2.0.0"
+  description: "Advanced Web Security Testing Framework"
+  author: "Security Team"
+
+  # Configuración de ejecución
+  debug: false
+  log_level: "INFO"  # DEBUG, INFO, WARNING, ERROR, CRITICAL
+  max_concurrent_scans: 5
+  default_timeout: 30
+  retry_attempts: 3
+
+# ==============================================
+# CONFIGURACIÓN DE BASE DE DATOS
+# ==============================================
+database:
+  # Tipo de base de datos: sqlite, postgresql, mysql
+  type: "sqlite"
+
+  # Para SQLite (recomendado para desarrollo)
+  sqlite:
+    path: "./data/wstg.db"
+    backup_enabled: true
+    backup_interval: "daily"
+
+  # Para PostgreSQL (opcional - producción)
+  postgresql:
+    host: "localhost"
+    port: 5432
+    database: "wstg_framework"
+    username: "wstg_user"
+    password: "secure_password"
+
+  # Para MySQL (opcional)
+  mysql:
+    host: "localhost"
+    port: 3306
+    database: "wstg_framework"
+    username: "wstg_user"
+    password: "secure_password"
+
+# ==============================================
+# CONFIGURACIÓN DE REPORTES
+# ==============================================
+reports:
+  # Directorio de salida
+  output_dir: "./reports"
+
+  # Formatos soportados
+  formats:
+    - "json"
+    - "html"
+    - "pdf"
+    - "xml"
+    - "csv"
+
+  # Plantillas personalizadas
+  templates:
+    html_report: "./templates/html_report.html"
+    pdf_report: "./templates/pdf_report.html"
+
+  # Configuración de PDF
+  pdf:
+    page_size: "A4"
+    margin: "2cm"
+    include_screenshots: true
+    include_charts: true
+
+  # Configuración de HTML
+  html:
+    include_css: true
+    include_js: true
+    theme: "dark"  # light, dark, auto
+
+  # Retención de reportes
+  retention:
+    days: 90
+    max_size_gb: 10
+
+# ==============================================
+# CONFIGURACIÓN DE SEGURIDAD
+# ==============================================
+security:
+  # Límites de solicitudes
+  max_requests_per_second: 10
+  max_requests_per_minute: 100
+
+  # Timeouts
+  connection_timeout: 30
+  read_timeout: 60
+
+  # User-Agent
+  user_agent: "OWASP-WSTG-Framework/2.0 (Security Testing)"
+
+  # Rate limiting
+  rate_limiting:
+    enabled: true
+    requests_per_second: 5
+    burst_size: 10
+
+  # Proxy configuration
+  proxy:
+    enabled: false
+    http_proxy: ""
+    https_proxy: ""
+    no_proxy: "localhost,127.0.0.1"
+
+  # SSL/TLS verification
+  ssl:
+    verify_certificates: true
+    allow_self_signed: false
+
+# ==============================================
+# CONFIGURACIÓN DE HERRAMIENTAS EXTERNAS
+# ==============================================
+tools:
+  # Nmap
+  nmap:
+    binary_path: "/usr/bin/nmap"
+    scripts_dir: "/usr/share/nmap/scripts"
+    default_args: "-sS -sV -O"
+
+  # Nikto
+  nikto:
+    binary_path: "/usr/bin/nikto"
+    config_file: "/etc/nikto.conf"
+    timeout: 300
+
+  # SQLMap
+  sqlmap:
+    binary_path: "/usr/bin/sqlmap"
+    output_dir: "./temp/sqlmap"
+    timeout: 600
+
+  # Gobuster
+  gobuster:
+    binary_path: "/usr/bin/gobuster"
+    wordlists:
+      - "/usr/share/wordlists/dirb/common.txt"
+      - "/usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt"
+
+  # Hydra
+  hydra:
+    binary_path: "/usr/bin/hydra"
+    max_threads: 16
+
+  # OWASP ZAP
+  zaproxy:
+    binary_path: "/usr/bin/zaproxy"
+    api_key: ""
+    host: "127.0.0.1"
+    port: 8080
+
+  # Burp Suite (si está instalado)
+  burpsuite:
+    java_path: "/usr/bin/java"
+    jar_path: ""
+    headless: true
+
+  # Selenium/WebDriver
+  selenium:
+    driver_path: "/usr/local/bin/chromedriver"
+    browser: "chrome"  # chrome, firefox, edge
+    headless: true
+    window_size: "1920,1080"
+    timeout: 30
+
+# ==============================================
+# CONFIGURACIÓN DE APIS EXTERNAS
+# ==============================================
+apis:
+  # VirusTotal
+  virustotal:
+    enabled: false
+    api_key: ""
+    base_url: "https://www.virustotal.com/vtapi/v2"
+    requests_per_minute: 4
+
+  # Shodan
+  shodan:
+    enabled: false
+    api_key: ""
+    base_url: "https://api.shodan.io"
+
+  # PassiveTotal
+  passive_total:
+    enabled: false
+    api_key: ""
+    user_key: ""
+
+  # URLVoid
+  urlvoid:
+    enabled: false
+    api_key: ""
+
+  # OTX (AlienVault Open Threat Exchange)
+  otx:
+    enabled: false
+    api_key: ""
+    base_url: "https://otx.alienvault.com/api/v1"
+
+# ==============================================
+# CONFIGURACIÓN DE NOTIFICACIONES
+# ==============================================
+notifications:
+  # Email notifications
+  email:
+    enabled: false
+    smtp_server: "smtp.gmail.com"
+    smtp_port: 587
+    username: ""
+    password: ""
+    from_address: ""
+    to_addresses: []
+
+  # Slack notifications
+  slack:
+    enabled: false
+    webhook_url: ""
+    channel: "#security-alerts"
+
+  # Discord notifications
+  discord:
+    enabled: false
+    webhook_url: ""
+
+# ==============================================
+# CONFIGURACIÓN DE WEB DASHBOARD
+# ==============================================
+web_dashboard:
+  # Server configuration
+  host: "127.0.0.1"
+  port: 8080
+  debug: false
+
+  # Security
+  secret_key: "change-this-secret-key-in-production"
+  session_timeout: 3600  # 1 hour
+
+  # Authentication
+  auth:
+    enabled: true
+    method: "local"  # local, ldap, oauth
+    users:
+      - username: "admin"
+        password: "admin123"  # Change this!
+        role: "admin"
+      - username: "analyst"
+        password: "analyst123"  # Change this!
+        role: "analyst"
+
+  # CORS settings
+  cors:
+    enabled: true
+    origins: ["http://localhost:3000", "http://127.0.0.1:3000"]
+
+  # File uploads
+  upload:
+    max_size_mb: 50
+    allowed_extensions: ["txt", "json", "xml", "csv"]
+
+# ==============================================
+# CONFIGURACIÓN DE LOGGING
+# ==============================================
+logging:
+  # Log file configuration
+  file:
+    enabled: true
+    path: "./logs/wstg_framework.log"
+    max_size_mb: 100
+    backup_count: 5
+
+  # Console logging
+  console:
+    enabled: true
+    format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+
+  # Log levels by module
+  modules:
+    core: "INFO"
+    web_dashboard: "WARNING"
+    scanners: "INFO"
+    reports: "INFO"
+
+# ==============================================
+# CONFIGURACIÓN DE RENDIMIENTO
+# ==============================================
+performance:
+  # Memory limits
+  max_memory_mb: 2048
+  gc_threshold: 0.8
+
+  # Thread pool
+  thread_pool_size: 10
+
+  # Cache configuration
+  cache:
+    enabled: true
+    type: "memory"  # memory, redis
+    ttl_seconds: 3600
+
+  # Queue configuration
+  queue:
+    max_size: 1000
+    worker_threads: 4
+
+# ==============================================
+# CONFIGURACIÓN DE TESTING
+# ==============================================
+testing:
+  # Test targets (para desarrollo/pruebas)
+  safe_targets:
+    - "http://httpbin.org"
+    - "https://scanme.sh"
+    - "https://testphp.vulnweb.com"
+
+  # Test configuration
+  parallel_tests: true
+  mock_external_apis: true
+
+# ==============================================
+# CONFIGURACIÓN AVANZADA
+# ==============================================
+advanced:
+  # Custom modules
+  custom_modules:
+    enabled: false
+    directory: "./custom_modules"
+
+  # Plugins
+  plugins:
+    enabled: false
+    directory: "./plugins"
+    auto_load: true
+
+  # Experimental features
+  experimental:
+    ml_anomaly_detection: false
+    auto_report_generation: false
+    real_time_monitoring: false
+
+# ==============================================
+# NOTAS IMPORTANTES
+# ==============================================
+#
+# 1. CAMBIAR CONTRASEÑAS por defecto antes de producción
+# 2. CONFIGURAR API keys para servicios externos
+# 3. AJUSTAR límites de concurrencia según capacidad del servidor
+# 4. CONFIGURAR backup de base de datos
+# 5. REVISAR configuración de seguridad y SSL
+#
+# ==============================================
+# FIN DEL ARCHIVO DE CONFIGURACIÓN
+# ==============================================
