@@ -1,0 +1,164 @@
+# OWASP WSTG Testing Framework Requirements - VERSIÓN ESTABLE Y COMPATIBLE
+# Optimizado para Python 3.9-3.12 y compatibilidad máxima
+
+# ==============================================
+# CORE DEPENDENCIES (Siempre compatibles)
+# ==============================================
+requests>=2.28.0
+urllib3>=1.26.0
+certifi>=2022.0.0
+idna>=3.4.0
+
+# HTML parsing y web scraping
+beautifulsoup4>=4.11.0
+lxml>=4.9.0
+html5lib>=1.1
+soupsieve>=2.3.0
+
+# ==============================================
+# ANÁLISIS DE DATOS Y VALIDACIÓN
+# ==============================================
+python-dateutil>=2.8.0
+faker>=18.0.0
+pydantic>=1.10.0
+email-validator>=1.3.0
+
+# ==============================================
+# RED Y DNS
+# ==============================================
+dnspython>=2.3.0
+python-whois>=0.8.0
+netaddr>=0.8.0
+
+# ==============================================
+# SSL/TLS Y CRIPTOGRAFÍA
+# ==============================================
+cryptography>=38.0.0
+pyOpenSSL>=22.0.0
+
+# ==============================================
+# BASE DE DATOS
+# ==============================================
+# sqlite3 viene con Python - NO INSTALAR VIA PIP
+SQLAlchemy>=1.4.0
+alembic>=1.8.0
+
+# ==============================================
+# CONFIGURACIÓN Y UTILIDADES
+# ==============================================
+pyyaml>=6.0
+python-dotenv>=0.19.0
+click>=8.0.0
+colorama>=0.4.0
+tqdm>=4.64.0
+rich>=12.0.0
+
+# ==============================================
+# REPORTES Y EXPORTACIÓN
+# ==============================================
+jinja2>=3.1.0
+matplotlib>=3.6.0
+reportlab>=3.6.0
+openpyxl>=3.0.0
+
+# ==============================================
+# WEB AUTOMATION
+# ==============================================
+selenium>=4.5.0
+undetected-chromedriver>=3.4.0
+
+# ==============================================
+# ASYNC SUPPORT
+# ==============================================
+# asyncio viene con Python 3.7+ - NO INSTALAR VIA PIP
+aiofiles>=22.0.0
+aiohttp>=3.8.0
+
+# ==============================================
+# ANÁLISIS DE DATOS AVANZADO
+# ==============================================
+pandas>=1.5.0
+numpy>=1.21.0
+scipy>=1.9.0
+
+# ==============================================
+# HERRAMIENTAS DE SEGURIDAD (Compatibles)
+# ==============================================
+# Python wrappers para herramientas de seguridad
+python-nmap>=0.7.1              # Wrapper para Nmap (estable)
+
+# Herramientas de red
+scapy>=2.5.0                    # Manipulación de paquetes
+psutil>=5.9.0                   # System monitoring
+
+# Herramientas forenses (si están disponibles)
+# pyelftools>=0.28              # Análisis ELF - opcional
+# volatility3>=2.0.0           # Memory forensics - opcional
+
+# ==============================================
+# MACHINE LEARNING (Opcional)
+# ==============================================
+scikit-learn>=1.1.0             # Versión compatible
+
+# ==============================================
+# TESTING Y DESARROLLO
+# ==============================================
+pytest>=7.0.0
+pytest-cov>=3.0.0
+
+# ==============================================
+# SEGURIDAD ADICIONAL
+# ==============================================
+bcrypt>=4.0.0
+PyJWT>=2.6.0
+
+# ==============================================
+# FRAMEWORK WEB (Dashboard)
+# ==============================================
+Flask>=2.2.0
+Flask-CORS>=3.0.0
+Werkzeug>=2.2.0
+
+# ==============================================
+# VISUALIZACIÓN
+# ==============================================
+plotly>=5.10.0
+seaborn>=0.11.0
+
+# ==============================================
+# NOTAS IMPORTANTES
+# ==============================================
+#
+# MÓDULOS QUE VIENEN CON PYTHON (NO INSTALAR):
+# - sqlite3 (viene con Python 3.x)
+# - asyncio (viene con Python 3.7+)
+# - ipaddress (viene con Python 3.x)
+#
+# HERRAMIENTAS QUE DEBEN INSTALARSE POR SEPARADO:
+# - nmap (apt install nmap)
+# - nikto (apt install nikto)
+# - sqlmap (apt install sqlmap)
+# - gobuster (apt install gobuster)
+# - dirb (apt install dirb)
+# - hydra (apt install hydra)
+# - john (apt install john)
+# - hashcat (apt install hashcat)
+# - wireshark (apt install wireshark)
+# - burpsuite (apt install burpsuite)
+# - zaproxy (apt install zaproxy)
+#
+# PAQUETES NO DISPONIBLES O PROBLEMÁTICOS:
+# - python-owasp-zap-v2.9 (no existe)
+# - pymetasploit3 (requiere configuración especial)
+# - hashcat-python (usar hashcat del sistema)
+# - john (usar john the ripper del sistema)
+# - volatility (requiere Python específico)
+# - pyelftools (puede dar problemas en algunas versiones)
+#
+# ==============================================
+# VERSIÓN COMPATIBLE CON:
+# - Python 3.9.0 - 3.12.x
+# - Kali Linux 2022+
+# - Ubuntu 20.04+
+# - Debian 11+
+# ==============================================

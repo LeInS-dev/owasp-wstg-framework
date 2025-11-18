@@ -94,7 +94,7 @@ mkdocs-material>=9.1.0
 # Python wrappers para herramientas de Kali
 python-nmap>=0.7.1          # Wrapper para Nmap
 pymetasploit3>=1.0.0       # Interfaz para Metasploit
-python-owasp-zap-v2.9>=0.0.4  # OWASP ZAP API
+# python-owasp-zap-v2.9>=0.0.4  # OWASP ZAP API - PAQUETE NO DISPONIBLE, USAR ZAP DIRECTAMENTE
 
 # Análisis de tráfico de red
 scapy>=2.5.0               # Manipulación de paquetes
