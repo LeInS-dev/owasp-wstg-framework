@@ -27,7 +27,7 @@ html5lib>=1.1
 soupsieve>=2.5.0
 
 # Database support (optional for persistent storage)
-sqlite3  # Built-in with Python 3.x
+# sqlite3  # Built-in with Python 3.x (no instalar via pip)
 sqlalchemy>=2.0.0
 
 # PDF and report generation (optional)
@@ -66,7 +66,7 @@ selenium>=4.11.0
 playwright>=1.36.0
 
 # Async support
-asyncio  # Built-in with Python 3.7+
+# asyncio  # Built-in with Python 3.7+ (no instalar via pip)
 aiofiles>=23.0.0
 
 # Data export formats
@@ -159,7 +159,7 @@ Flask-CORS>=4.0.0          # CORS support para Flask
 flask-socketio>=5.3.0      # WebSockets para actualizaciones en tiempo real
 
 # Base de datos y almacenamiento
-sqlite3                    # Built-in (para desarrollo)
+# sqlite3                   # Built-in (para desarrollo) - no instalar via pip
 SQLAlchemy>=2.0.0          # ORM para múltiples bases de datos
 alembic>=1.11.0            # Database migrations
 

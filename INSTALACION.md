@@ -269,14 +269,29 @@ echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" | sud
 sudo apt update && sudo apt install -y google-chrome-stable
 ```
 
-#### 3. Problemas de permisos:
+#### 3. ERROR con sqlite3 o asyncio:
+```
+ERROR: Could not find a version that satisfies the requirement sqlite3 (from versions: none)
+```
+**Solución**: Estos módulos vienen integrados en Python y no se instalan via pip.
+```bash
+# Comentar o eliminar estas líneas de requirements.txt:
+# sqlite3  # Built-in with Python 3.x
+# asyncio  # Built-in with Python 3.7+
+
+# O usar el requirements.txt ya corregido
+sed -i 's/^sqlite3/#sqlite3/' requirements.txt
+sed -i 's/^asyncio/#asyncio/' requirements.txt
+```
+
+#### 4. Problemas de permisos:
 ```bash
 # Solución
 sudo chown -R $USER:$USER /opt/owasp-wstg-framework
 chmod +x /opt/owasp-wstg-framework/*.py
 ```
 
-#### 4. Error de dependencias:
+#### 5. Error de dependencias:
 ```bash
 # Limpiar caché de pip
 pip cache purge
@@ -285,7 +300,7 @@ pip cache purge
 pip install --force-reinstall -r requirements.txt
 ```
 
-#### 5. Problemas con librerías de sistema:
+#### 6. Problemas con librerías de sistema:
 ```bash
 # Instalar build essentials
 sudo apt install -y build-essential python3-dev libffi-dev libssl-dev
@@ -329,7 +344,12 @@ source venv_wstg/bin/activate
 # Actualizar pip
 pip install --upgrade pip setuptools wheel
 
-# Instalar dependencias en batches
+# Corregir requirements.txt primero (eliminar módulos integrados)
+echo "🔧 Corrigiendo requirements.txt..."
+sed -i 's/^sqlite3/#sqlite3/' requirements.txt
+sed -i 's/^asyncio/#asyncio/' requirements.txt
+
+# Instalar dependencias en batches (evitando módulos integrados)
 echo "📦 Instalando dependencias core..."
 pip install requests beautifulsoup4 lxml certifi urllib3 python-dateutil pydantic faker
 
@@ -340,7 +360,7 @@ echo "📦 Instalando herramientas web..."
 pip install selenium playwright undetected-chromedriver
 
 echo "📦 Instalando dashboard..."
-pip install Flask Flask-CORS flask-socketio plotly pandas numpy
+pip install Flask Flask-CORS flask-socketio plotly pandas numpy sqlalchemy
 
 echo "📦 Instalando herramientas adicionales..."
 pip install click rich tqdm colorama pyyaml python-dotenv
